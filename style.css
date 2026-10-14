@@ -1,0 +1,66 @@
+/* ===== Archery Vengeance - style.css ===== */
+
+/* Make sizes include padding and borders (easier to reason about) */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background-color: #1e3a5f; /* dark blue around the game */
+  color: #ffffff;
+  text-align: center;
+}
+
+header h1 {
+  margin: 12px 0 8px;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: #ffd166; /* golden title */
+  text-shadow: 2px 2px 0 #000000;
+}
+
+main {
+  padding: 0 16px 16px; /* 16px gap on the sides so nothing touches the screen edge */
+}
+
+/* The box that holds the canvas. game.js reads its width to size the canvas. */
+#gameContainer {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+#gameCanvas {
+  display: block;
+  border: 4px solid #000000;
+  border-radius: 8px;
+  background-color: #87ceeb; /* sky blue, shown before the first frame is drawn */
+  touch-action: none; /* stop the phone from scrolling when you drag on the game */
+}
+
+#instructions {
+  max-width: 600px;
+  margin: 16px auto 0;
+  line-height: 1.5;
+}
+
+#instructions h2 {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+  color: #ffd166;
+}
+
+#instructions p {
+  margin: 4px 0;
+}
+
+/* Smaller title on phones */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- This line makes the page fit phone screens properly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archery Vengeance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Archery Vengeance</h1>
+  </header>
+
+  <main>
+    <!-- The game is drawn inside this canvas by game.js -->
+    <div id="gameContainer">
+      <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <!-- Short instructions shown under the game -->
+    <section id="instructions">
+      <h2>How to play</h2>
+      <p>Move the mouse (or drag your finger) to aim. Click (or lift your finger) to shoot.</p>
+      <p>Hit the target to score. Miss 3 times and the game is over!</p>
+    </section>
+  </main>
+
+  <!-- Load the game code last, after the canvas exists on the page -->
+  <script src="game.js"></script>
+</body>
+</html>
