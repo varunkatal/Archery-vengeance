@@ -8,14 +8,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Archery Vengeance</h1>
-  </header>
-
   <main>
-    <!-- The game is drawn inside this canvas by game.js -->
-    <div id="gameContainer">
-      <canvas id="gameCanvas"></canvas>
+    <!-- gameArea is the full-width space the game is allowed to use -->
+    <div id="gameArea">
+      <!-- gameContainer is exactly the size of the canvas, so the
+           Start screen can sit right on top of it -->
+      <div id="gameContainer">
+        <!-- The game scene is drawn inside this canvas by game.js -->
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Start screen: shown on top of the canvas before the game begins -->
+        <div id="startScreen" class="overlay">
+          <h1>Archery Vengeance</h1>
+          <p>Aim carefully. Every arrow counts.</p>
+          <button id="startButton" type="button">Start</button>
+        </div>
+      </div>
     </div>
 
     <!-- Short instructions shown under the game -->
@@ -26,7 +34,7 @@
     </section>
   </main>
 
-  <!-- Load the game code last, after the canvas exists on the page -->
+  <!-- Load the game code last, after everything above exists on the page -->
   <script src="game.js"></script>
 </body>
 </html>

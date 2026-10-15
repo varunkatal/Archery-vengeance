@@ -2,7 +2,7 @@
 
 A 2D browser archery game made with HTML, CSS, and JavaScript (Canvas).
 
-**Play online:** _link coming after GitHub Pages is turned on_
+**Play online:** https://varunkatal.github.io/Archery-vengeance/
 
 ## How to play
 

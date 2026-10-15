@@ -13,33 +13,93 @@ body {
   text-align: center;
 }
 
-header h1 {
-  margin: 12px 0 8px;
-  font-size: 2rem;
-  letter-spacing: 2px;
-  color: #ffd166; /* golden title */
-  text-shadow: 2px 2px 0 #000000;
-}
-
 main {
-  padding: 0 16px 16px; /* 16px gap on the sides so nothing touches the screen edge */
+  padding: 16px; /* 16px gap on every side so nothing touches the screen edge */
 }
 
-/* The box that holds the canvas. game.js reads its width to size the canvas. */
-#gameContainer {
+/* Full-width space for the game. game.js reads its width to size the canvas. */
+#gameArea {
   width: 100%;
-  max-width: 960px;
+  max-width: 968px; /* 960px canvas + 4px border on each side */
   margin: 0 auto;
   display: flex;
   justify-content: center;
 }
 
-#gameCanvas {
-  display: block;
+/* Wraps the canvas tightly. "position: relative" lets the overlay sit on top. */
+#gameContainer {
+  position: relative;
   border: 4px solid #000000;
   border-radius: 8px;
+  overflow: hidden; /* keeps the rounded corners neat */
+}
+
+#gameCanvas {
+  display: block;
   background-color: #87ceeb; /* sky blue, shown before the first frame is drawn */
   touch-action: none; /* stop the phone from scrolling when you drag on the game */
+}
+
+/* --- Overlay screens (Start screen now, Game Over later) --- */
+.overlay {
+  position: absolute;
+  inset: 0; /* cover the whole canvas */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: rgba(30, 58, 95, 0.7); /* see-through dark blue */
+}
+
+/* Adding the class "hidden" to an overlay makes it disappear */
+.overlay.hidden {
+  display: none;
+}
+
+.overlay h1 {
+  margin: 0;
+  /* clamp(smallest, preferred, largest) - the title shrinks on small screens */
+  font-size: clamp(1.6rem, 6vw, 3.5rem);
+  letter-spacing: 2px;
+  color: #ffd166; /* golden title */
+  text-shadow: 3px 3px 0 #000000;
+}
+
+.overlay p {
+  margin: 0;
+  font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+}
+
+/* Big friendly buttons */
+button {
+  font-family: inherit;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: bold;
+  padding: 10px 36px;
+  color: #1e3a5f;
+  background-color: #ffd166;
+  border: 3px solid #000000;
+  border-radius: 999px; /* pill shape */
+  box-shadow: 0 4px 0 #000000;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ffe29a;
+}
+
+/* Button "pushes down" when clicked */
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #000000;
+}
+
+/* Visible outline for keyboard users (Tab key) */
+button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
 }
 
 #instructions {
@@ -56,11 +116,4 @@ main {
 
 #instructions p {
   margin: 4px 0;
-}
-
-/* Smaller title on phones */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.5rem;
-  }
 }
